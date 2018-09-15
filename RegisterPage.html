@@ -11,19 +11,95 @@
 <div class="col-md-4 col-md-offset-4">
     <div class="box-content profile">
         <h3 class="widget-title">Register Page</h3>
-        <form class="contact-form">
+        <form class="contact-form simple-form">
             <fieldset>
-                <input type="text" style="width: 34%;" id="food" placeholder="First name" >
-                <input type="text" style="width: 35%;" id="food" placeholder="Last name" >
-                <input type="text" style="width: 70%;" id="food" placeholder="UserName" >
-                <input type="text" style="width: 70%;" id="food" placeholder="password" >
-                <input type="text" style="width: 70%;" id="food" placeholder="Confirm password" >
-                <input type="text" style="width: 70%;" id="food" placeholder="Mobile phone" >
-                <input type="text" style="width: 70%;" id="food" placeholder="bday" >
-                <input type="text" style="width: 70%;" id="food" placeholder="gender" >
-                <input type="text" style="width: 70%;" id="food" placeholder="country"><br>
+                <input type="text" style="width: 33%;" id="fName" placeholder="First name" required focus>
+                <input type="text" style="width: 34%;" id="lName" placeholder="Last name" required>
+                <input type="email" style="width: 70%;" id="uName" placeholder="Email ID" required>
+                <input type="password" style="width: 70%;" id="pass" placeholder="Password" required>
+                <input type="password" style="width: 70%;" id="confirmPass" placeholder="Confirm password" required >
+                <input type="text" style="width: 70%;" id="mobilePhone" placeholder="Mobile phone" optional><br>
+                &nbsp;DOB:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" style="width: 54%" id="dob" ><br>
+                &nbsp;Gender:&nbsp;&nbsp;&nbsp;<select id="gender" name="gender" style="width:53%">
+                    <option selected disabled class="widget-title">Gender</option>
+                    <option>Female</option>
+                    <option>Male</option>
+                    <option>Other</option>
+                </select><br>
+                &nbsp;Country:&nbsp;
+                <select id="loc" name="country" style="width:53%">
+                    <option selected disabled class="widget-title">Choose Your Country</option>
+                    <option>Austria</option>
+                    <option>Algeria</option>
+                    <option>Australia</option>
+                    <option>Bangladesh</option>
+                    <option>Belgium</option>
+                    <option>Bhutan</option>
+                    <option>Brazil</option>
+                    <option>Bulgaria</option>
+                    <option>Canada</option>
+                    <option>Chile</option>
+                    <option>Columbia</option>
+                    <option>CostaRica</option>
+                    <option>Cuba</option>
+                    <option>Denmark</option>
+                    <option>Dominican Republic</option>
+                    <option>Egypt</option>
+                    <option>Ethiopia</option>
+                    <option>Fiji</option>
+                    <option>Finland</option>
+                    <option>France</option>
+                    <option>Georgia</option>
+                    <option>Germany</option>
+                    <option>Ghana</option>
+                    <option>Greece</option>
+                    <option>Hong Kong</option>
+                    <option>Hungary</option>
+                    <option>India</option>
+                    <option>Indonesia</option>
+                    <option>Iran</option>
+                    <option>Iraq</option>
+                    <option>Ireland</option>
+                    <option>Israel</option>
+                    <option>Italy</option>
+                    <option>Japan</option>
+                    <option>Kenya</option>
+                    <option>Korea</option>
+                    <option>Kuwait</option>
+                    <option>Libya</option>
+                    <option>Macao</option>
+                    <option>Malaysia</option>
+                    <option>Maldives</option>
+                    <option>Mexico</option>
+                    <option>Morocco</option>
+                    <option>Nepal</option>
+                    <option>Netherlands</option>
+                    <option>Nigeria</option>
+                    <option>Norway</option>
+                    <option>Oman</option>
+                    <option>Pakistan</option>
+                    <option>Poland</option>
+                    <option>Portugal</option>
+                    <option>Qatar</option>
+                    <option>Russia</option>
+                    <option>Saudi Arabia</option>
+                    <option>South Africa</option>
+                    <option>Sri Lanka</option>
+                    <option>Spain</option>
+                    <option>Switzerland</option>
+                    <option>Taiwan</option>
+                    <option>Thailand</option>
+                    <option>Turkey</option>
+                    <option>Uganda</option>
+                    <option>United Arab Emirates</option>
+                    <option>United Kingdom</option>
+                    <option>United States of America</option>
+                    <option>Vietnam</option>
+                    <option>Yemen</option>
+                    <option>Zimbabwe</option>
+                </select><br><br>
                 <input type="button" class="button" style="padding:9px 18px;"
-                       value="Find" >
+                       value="Sign UP" >
             </fieldset>
         </form>
     </div>
