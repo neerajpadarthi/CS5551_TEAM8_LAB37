@@ -9,6 +9,34 @@
 	<link href="css/font-awesome.css" rel="stylesheet">
     <link href="css/docs.css" rel="stylesheet" >
     <link href="css/bootstrap-social.css" rel="stylesheet" >
+	
+	<script>
+	
+	function myFunction() {
+            var username = document.getElementById("myusername");
+            var password = document.getElementById("mypassword");
+			if (username.value=="" || password.value=="")
+            {
+				finalError.innerHTML = 'Mandtory columns should be entered';
+            }
+			else
+			{
+				var Local_UserName = localStorage.getItem('userName');
+				var Local_Password = localStorage.getItem('password');
+				if(Local_UserName === username.value && Local_Password === password.value)
+				{
+					alert("Login successful");
+								
+				}
+				else
+				{
+					finalError.innerHTML = 'Please enter valid user name and password';	
+				}
+			
+			}
+			}
+	
+	</script>
 </head>
 <body>
 <center>
@@ -18,15 +46,16 @@
 		
         <form class="contact-form simple-form">
             <fieldset>
-                <input type="text" style="width: 70%;" id="food" placeholder="UserName" required >
-                <input type="text" style="width: 70%;" id="food" placeholder="password" required>
+                <input type="text" style="width: 70%;" id="myusername" placeholder="UserName" required >
+                <input type="password" style="width: 70%;" id="mypassword" placeholder="password" required>
                 <br>
 				<br>
                 <input type="button" class="button" style="padding:9px 18px;"
-                       value="Login" >
+                       value="Login" onclick="myFunction()">
             </fieldset>
         </form>
 		<br>
+		<div id="finalError" class="error-fields"></div>
 		<div class="form-group"> 
 			<div class="col-md-12 control"> 
 				<div class="no-acc"> 
@@ -43,7 +72,8 @@
 				<a id="btn-twitterlogin" href="#" class="btn btn-twitter"><span class="fa fa-twitter-square"></span>Login with Twitter</a> 
 			</div> 
 		</div>
-						
+		
+		<br>			
     </div>						
 </div>
 </body>
