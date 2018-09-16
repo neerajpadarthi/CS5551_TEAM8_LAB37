@@ -39,7 +39,7 @@
 	});
 
 	$(".main-menu a.contactbutton").click(function(){
-		$("#menu-container .content").fadeOut();
+		$("#menu-container .content").slideUp('slow');
 		$("#menu-container .contact-section").slideDown('slow');
 		$(".logo-top-margin").animate({marginTop:'0'}, "slow");
 		$(".logo-top-margin").animate({marginLeft:'0'}, "slow");

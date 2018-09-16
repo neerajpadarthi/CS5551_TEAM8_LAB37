@@ -82,31 +82,62 @@
                 </div>
 
                 <div id="menu-4" class="content contact-section">
-                    <div class="row">
+
                         <div class="col-md-8 col-sm-8" style="width: 100%">
                             <div class="box-content">
-                                <h3 class="widget-title">Send Us A Message</h3>
+                                <h3 class="widget-title">Google Direction</h3>
                                 <form class="contact-form">
                                     <fieldset>
-                                        <input type="text" class="name" id="name" placeholder="Name...">
+                                        <select id="from">
+                                            <option value="chicago, il">Chicago</option>
+                                            <option value="st louis, mo">St Louis</option>
+                                            <option value="joplin, mo">Joplin, MO</option>
+                                            <option value="oklahoma city, ok">Oklahoma City</option>
+                                            <option value="amarillo, tx">Amarillo</option>
+                                            <option value="gallup, nm">Gallup, NM</option>
+                                            <option value="flagstaff, az">Flagstaff, AZ</option>
+                                            <option value="winona, az">Winona</option>
+                                            <option value="kingman, az">Kingman</option>
+                                            <option value="barstow, ca">Barstow</option>
+                                            <option value="san bernardino, ca">San Bernardino</option>
+                                            <option value="los angeles, ca">Los Angeles</option>
+                                        </select>
                                     </fieldset>
                                     <fieldset>
-                                        <input type="email" class="email" id="email" placeholder="Email...">
+                                        <select id="to">
+                                            <option value="chicago, il">Chicago</option>
+                                            <option value="st louis, mo">St Louis</option>
+                                            <option value="joplin, mo">Joplin, MO</option>
+                                            <option value="oklahoma city, ok">Oklahoma City</option>
+                                            <option value="amarillo, tx">Amarillo</option>
+                                            <option value="gallup, nm">Gallup, NM</option>
+                                            <option value="flagstaff, az">Flagstaff, AZ</option>
+                                            <option value="winona, az">Winona</option>
+                                            <option value="kingman, az">Kingman</option>
+                                            <option value="barstow, ca">Barstow</option>
+                                            <option value="san bernardino, ca">San Bernardino</option>
+                                            <option value="los angeles, ca">Los Angeles</option>
+                                        </select>
                                     </fieldset>
                                     <fieldset>
-                                        <input type="text" class="subject" id="subject" placeholder="Subject...">
-                                    </fieldset>
-                                    <fieldset>
-                                        <textarea name="message" id="message" cols="30" rows="4"
-                                                  placeholder="Message.."></textarea>
-                                    </fieldset>
-                                    <fieldset>
-                                        <input type="submit" class="button" id="button" value="Send Message">
+                                        <input type="button" class="button" id="button" value="Show" onclick="initMap();hideFunction()">
                                     </fieldset>
                                 </form>
+
                             </div>
                         </div>
+
+                    <div id="mapDiv" style="display:none">
+                    <div class="col-md-8 col-sm-8" style="width: 100%"  >
+                        <div id="map"  class="box-content" style="height:700px;"  >
+                        </div>
                     </div>
+
+                    </div>
+
+
+
+
                 </div>
 
             </div>
@@ -146,8 +177,48 @@
     </div>
 </div> <!-- .site-footer -->
 
+<script>
+    function initMap() {
+        var directionsService = new google.maps.DirectionsService;
+        var directionsDisplay = new google.maps.DirectionsRenderer;
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 7,
+            center: {lat: 41.8781, lng: -87.6298}
+        });
+        directionsDisplay.setMap(map);
+
+        var onChangeHandler = function() {
+            calculateAndDisplayRoute(directionsService, directionsDisplay);
+        };
+        document.getElementById('from').addEventListener('change', onChangeHandler);
+        document.getElementById('to').addEventListener('change', onChangeHandler);
+    }
+
+    function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+        directionsService.route({
+            origin: document.getElementById('from').value,
+            destination: document.getElementById('to').value,
+            travelMode: 'DRIVING'
+        }, function(response, status) {
+            if (status === 'OK') {
+                directionsDisplay.setDirections(response);
+            } else {
+                window.alert('Directions request failed due to ' + status);
+            }
+        });
+    }
+
+    function hideFunction() {
+        var x = document.getElementById("mapDiv");
+        if (x.style.display === "none"  ) {
+            x.style.display = "block";
+        }
+    }
+</script>
+
 <script src="js/vendor/jquery-1.10.2.min.js"></script>
 <script src="js/main.js"></script>
-
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCLtcwNxIsg87dJ1fZsMl62cBl30fosLkY">
+</script>
 </body>
 </html>
