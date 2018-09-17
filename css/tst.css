@@ -685,8 +685,33 @@ h1, h2, h3, h4, h5 {
   border-left-color: salmon;
 }
 
+.simple-form-input input {
+  margin: 0 .25rem;
+  border: 1px solid #eee;
+  border-left: 3px solid;
+  border-radius: 5px;
+  transition: border-color .5s ease-out;
+}
+.simple-form-input input:optional {
+	width:150px;
+  border-left-color: palegreen;
+}
+.simple-form-input input:required:valid {
+	width:150px;
+  border-left-color: palegreen;
+}
+.simple-form-input input:invalid {
+  border-left-color: salmon;
+  width:150px;
+}
+
 .error-fields{
 	color: red 
+}
+
+.check-fields{
+	color: black;
+	align:right;
 }
 
 /* Custom */

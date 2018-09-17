@@ -20,8 +20,10 @@
                 <input type="text" style="width: 70%;" id="uName" placeholder="Email ID" required>
                 <div id="error1" class="error-fields"></div>
                 <input type="password" style="width: 70%;" id="pass" placeholder="Password" required>
+                <div id="errorPass" class="check-fields"></div>
                 <input type="password" style="width: 70%;" id="confirmPass" placeholder="Confirm password" required >
                 <div id="error2" class="error-fields"></div>
+                <div id="errorConfirmPass" class="check-fields"></div>
                 <input type="text" style="width: 70%;" id="mobilePhone" placeholder="Mobile phone" optional><br>
                 <div id="error3" class="error-fields"></div>
                 &nbsp;DOB:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="date" style="width: 54%" id="dob" ><br>
@@ -141,8 +143,36 @@
             }
         };
 
+        pass.onkeyup= function()
 
+        {
+            if(pass.value.length>5)
+            {
+                errorPass.innerHTML="Strength:good";
+            }
+            else
+            {
+                errorPass.innerHTML="Strength:poor";
+            }
+        }
+
+        confirmPass.onkeyup= function()
+
+        {
+            errorPass.innerHTML="";
+            if(confirmPass.value.length>5)
+            {
+                errorConfirmPass.innerHTML="Strength:good";
+            }
+            else
+            {
+                errorConfirmPass.innerHTML="Strength:poor";
+            }
+        }
         confirmPass.onblur = function() {
+
+
+
             if (!(confirmPass.value.toString()).match(pass.value.toString())) {
                 confirmPass.classList.add('invalid');
                 error2.innerHTML = 'Passwords should be same'
@@ -156,7 +186,13 @@
             }
         };
 
+        mobilePhone.onkeyup=function()
+        {
+            errorConfirmPass.innerHTML="";
+        }
+
         mobilePhone.onblur = function() {
+
             var re1 = /^([0|\+[0-9]{1,5})?([7-9][0-9]{9})$/;
             if (!(re1.test(mobilePhone.value)) && mobilePhone.value!="") {
                 mobilePhone.classList.add('invalid');
