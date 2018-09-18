@@ -662,7 +662,17 @@ h1, h2, h3, h4, h5 {
 .site-footer a {
   color: #5cb48e;
 }
-
+  .bg-4 { 
+      background-color: rgba(0, 0, 0, 0.7);
+      color: rgb(116, 111, 111);
+  }
+  .container-fluid {
+      padding-top: 70px;
+      padding-bottom: 70px;
+  }
+ .noBullets {
+	list-style-type: none;
+}
 
 .simple-form {
   display: flex;
