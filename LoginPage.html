@@ -6,9 +6,16 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/templatemo-style.css">
 	
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+	<script src="js/FacebookScript.js"></script>
 	<link href="css/font-awesome.css" rel="stylesheet">
     <link href="css/docs.css" rel="stylesheet" >
     <link href="css/bootstrap-social.css" rel="stylesheet" >
+	
+	
+	<script src="https://apis.google.com/js/platform.js" async defer></script>
+	<meta name="google-signin-client_id" content="319573095737-2c98cnr7fhjnurbi5es3h907klpd0hpb.apps.googleusercontent.com">
 	
 	<script>
 	
@@ -25,7 +32,7 @@
 				var Local_Password = localStorage.getItem('password');
 				if(Local_UserName === username.value && Local_Password === password.value)
 				{
-					alert("Login successful");
+					window.location.href = 'homePage.html';
 								
 				}
 				else
@@ -35,8 +42,26 @@
 			
 			}
 			}
+
+    function onSignIn(googleUser) {
+        var profile = googleUser.getBasicProfile();
+        if (profile != null || profile != undefined || profile != '') {
+            console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+            console.log('Username: ' + profile.getName());
+            console.log('Image URL: ' + profile.getImageUrl());
+            console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+            window.location.href = 'HomePage.html';
+        }
+        else {
+            alert('Google Sign In Failed!');
+        }
+    }
 	
+
 	</script>
+	
+	
+
 </head>
 <body>
 <center>
@@ -54,7 +79,7 @@
                        value="Login" onclick="myFunction()">
             </fieldset>
         </form>
-		<br>
+	
 		<div id="finalError" class="error-fields"></div>
 		<div class="form-group"> 
 			<div class="col-md-12 control"> 
@@ -65,11 +90,19 @@
 			</div> 
 		</div> 
 		<strong>OR</strong>
+		<br>
 		<div class="form-group"> 
 			<div class="col-sm-12 controls"> 
-			  	<a id="btn-fblogin" href="#" class="btn btn-facebook"><span class="fa fa-facebook-square"></span>Login with Facebook</a> 
-				<a id="btn-googlelogin" href="#" class="btn btn-google"><span class="fa fa-google-plus"></span>Login with Google+</a> 
-				<a id="btn-twitterlogin" href="#" class="btn btn-twitter"><span class="fa fa-twitter-square"></span>Login with Twitter</a> 
+			  	
+				<div class="g-signin2" data-onsuccess="onSignIn"></div>
+				<br> 				
+				<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+				</fb:login-button>
+
+<div id="status">
+</div>
+				
+				
 			</div> 
 		</div>
 		
