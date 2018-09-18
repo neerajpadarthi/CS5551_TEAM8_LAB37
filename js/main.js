@@ -14,7 +14,6 @@ function showFunction1()
     aboutSection.style.display="none";
 }
  function loadMap(){
-     // Step 1: initialize communication with the platform
      var platform = new H.service.Platform({
          app_id: 'devportal-demo-20180625',
          app_code: '9v2BkviRwi9Ot26kp2IysQ',
@@ -28,9 +27,7 @@ function showFunction1()
          ppi: pixelRatio === 1 ? undefined : 320
      });
 
-// Step 2: initialize a map
      map = new H.Map(document.getElementById('map'), defaultLayers.normal.map, {
-         // initial center and zoom level of the map
          zoom: 5,
          center: {lat: 20.5937, lng: 78.9629},
          pixelRatio: pixelRatio
@@ -39,26 +36,20 @@ function showFunction1()
 
       locationsContainer = document.getElementById('panel');
 
-// Step 3: make the map interactive
-// MapEvents enables the event system
-// Behavior implements default interactions for pan/zoom (also on mobile touch environments)
+
      var behavior = new H.mapevents.Behavior(new H.mapevents.MapEvents(map));
 
-// Step 4: main logic goes here
      addMetaInfoLayer(map);
 
 
  }
 function addMetaInfoLayer(map) {
-  // Subscribe to the metaInfo objects' pointermove event. The event bubbles up to
-  // the TileProvider of the metaInfo layer.
+
   var tileProvider = defaultLayers.normal.metaInfo.getProvider();
   tileProvider.addEventListener('pointermove', updateMapCursor);
 
-  // Change cursor back when not needed
   map.addEventListener('pointermove', updateMapCursor);
 
-  // Add a metaInfo layer to the map
   map.addLayer(defaultLayers.normal.metaInfo);
 }
 
@@ -69,7 +60,6 @@ function addMetaInfoLayer(map) {
  * @param {H.mapevents.Event} e
  */
 function updateMapCursor(e) {
-  // Change cursor appearance when hovering over geographic objects
   map.getElement().style.cursor = (e.target === map) ? '' : 'pointer';
   if (e.target !== map){
     showMetaInfo(e);
