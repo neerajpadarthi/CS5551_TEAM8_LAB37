@@ -1,11 +1,5 @@
 var defaultLayers, map;
 var locationsContainer;
-
-
-
-
-
-
 function showFunction()
 {
 	 var x = document.getElementById("menu-4");
@@ -14,19 +8,12 @@ function showFunction()
                         x.style.display = "block";
                     }
 }
-
 function showFunction1()
 {
-    var x = document.getElementById("menu-2");
-
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    }
+    var aboutSection=document.getElementById("aboutSection");
+    aboutSection.style.display="none";
 }
-
  function loadMap(){
- window.alert("Loaded");
-
      // Step 1: initialize communication with the platform
      var platform = new H.service.Platform({
          app_id: 'devportal-demo-20180625',
