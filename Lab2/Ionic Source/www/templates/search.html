@@ -1,0 +1,19 @@
+<ion-view view-title="Search">
+  <ion-content>
+    <div ng-controller="indexctrl">
+    <div class="box-content" >
+      <div class="simple-form-input" >
+    <input type="text"  class="destination find_input" required="required" ng-model="searchDestination" placeholder="Enter here">
+      </div>
+      <br>
+    <input type="button" class="button button-calm" onclick="hideFunction()" ng-click="getSearchResult()" value="Find"/>
+    </div>
+    <div id="resDIV" class="box-content descriptionBody" style="display:none">
+      <!--<p id="errormsg"></p>-->
+      <p><b>Description</b></p>
+      <p>{{searchDescription}}</p>
+      <p><img ng-src="{{searchimage}}"></p>
+    </div>
+    </div>
+  </ion-content>
+</ion-view>

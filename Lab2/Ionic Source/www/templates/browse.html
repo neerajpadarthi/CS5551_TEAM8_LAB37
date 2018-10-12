@@ -1,0 +1,19 @@
+<ion-view view-title="Browse">
+  <ion-content>
+    <div ng-controller="numctrl">
+      <div class="box-content" >
+        <div class="simple-form-input" >
+          <input type="text"  class="destination find_input" required="required" ng-model ="number" placeholder="Enter here">
+          <input type="text"  class="destination find_input" required="required" ng-model ="type" placeholder="Enter here">
+        </div>
+        <br>
+        <input type="button" class="button button-calm" onclick="hideFunction()" ng-click="getResult()" value="Find"/>
+      </div>
+      <div id="resDIV" class="box-content descriptionBody" style="display:none">
+        <div class = "destination find_input" style="font-size: medium">
+          {{result}}
+        </div>
+      </div>
+    </div>
+  </ion-content>
+</ion-view>
