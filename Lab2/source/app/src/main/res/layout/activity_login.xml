@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back"
+    tools:context=".LoginActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/Text"
+        android:layout_marginTop="20dp"
+        android:text="Login Page"
+        android:textSize="25dp"
+        android:paddingBottom="15dp"
+        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="#415ca0"
+        android:paddingLeft="80dp"/>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textEmailAddress"
+            android:ems="10"
+            android:id="@+id/Ltxt_uname"
+            android:hint="Username/Email"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="45dp"
+            android:layout_marginLeft="20dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:ems="10"
+            android:id="@+id/Ltxt_Pwd"
+            android:hint="Password"
+            android:password="true"
+            android:layout_below="@+id/txt_uname"
+            android:layout_alignLeft="@+id/txt_uname"
+            android:layout_alignStart="@+id/txt_uname"
+            android:layout_marginTop="31dp"
+            android:layout_marginLeft="20dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign in"
+            android:id="@+id/Lbtn_login"
+            android:layout_below="@+id/txt_Pwd"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="45dp"
+            android:onClick="checkCredentials"
+            android:layout_marginLeft="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="Please enter valid username and password"
+            android:id="@+id/Llbl_Error"
+            android:layout_marginTop="38dp"
+            android:visibility="invisible"
+            android:textColor="#e12c2c"
+            android:singleLine="false"
+            android:layout_below="@+id/btn_login"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="20dp"/>
+
+
+
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
