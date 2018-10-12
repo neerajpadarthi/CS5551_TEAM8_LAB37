@@ -106,7 +106,7 @@ public class MainPage extends AppCompatActivity {
         TextView sourceTextView = (TextView) findViewById(R.id.txt_Email);
 
         sourceText = sourceTextView.getText().toString();
-        String getURL = "https://api.uclassify.com/v1/uClassify/Sentiment/classify/?readKey=9QRZ6ZWbVRpH&text="+sourceText;
+        String getURL = "https://api.uclassify.com/v1/uClassify/Sentiment/classify/?readKey=v6fCuaHjCufl&text="+sourceText;
         final String response1 = "";
         OkHttpClient client = new OkHttpClient();
         try {
@@ -135,7 +135,7 @@ public class MainPage extends AppCompatActivity {
                                 float positive,negative;
                                 positive=Float.parseFloat(PositiveText);
                                 negative=Float.parseFloat(NegativeText1);
-                                SentimentView.setText("Positive and Negative Sentiment content: "+String.valueOf(positive)+","+String.valueOf(negative));
+                                SentimentView.setText("Positive and Negative Sentiment content: "+String.valueOf(positive)+"and"+String.valueOf(negative));
                             }
                         });
                     } catch (JSONException e) {
