@@ -60,11 +60,11 @@
 			<div class="menu_close_container"><div class="menu_close"></div></div>
 			<div class="logo menu_logo"><a href="#"><img src="images/logo.png" alt=""></a></div>
 			<ul>
-				<li class="menu_item"><a href="#">home</a></li>
-				<li class="menu_item"><a href="about.html">about us</a></li>
-				<!--<li class="menu_item"><a href="offers.html">offers</a></li>-->
-				<!--<li class="menu_item"><a href="blog.html">news</a></li>-->
-				<li class="menu_item"><a href="contact.html">contact</a></li>
+				<li class="main_nav_item"><a href="#">home</a></li>
+				<li class="main_nav_item"><a href="about.html">about us</a></li>
+				<li class="main_nav_item"><a href="history.html">history</a></li>
+				<li class="main_nav_item"><a href="profile.html">profile</a></li>
+				<li class="main_nav_item"><a href="contact.html">contact</a></li>
 			</ul>
 		</div>
 	</div>
@@ -123,8 +123,8 @@
 									<option>03</option>
 								</select>
 							</div>
-							<!--<button class="button search_button">search<span></span><span></span><span></span></button>-->
-							<input type="button" class="button search_button" style="padding:9px 18px;" onclick="hideFunction()"  ng-click="getSearchResult()" value="Find"/>
+							<!--<button class="button search_button" onclick="hideFunction()" ng-click="getSearchResult()">search<span></span><span></span><span></span></button>-->
+							<input type="button" class="button search_button" style="padding:9px 18px;" onclick="hideFunction()"  ng-click="getSearchResult()"  value="Find"/>
 						</form>
 					</div>
 				</div>
@@ -139,7 +139,7 @@
 				<div class="col fill_height">
 		<div class="search_item">
 			<div>destination</div>
-			<p>{{searchDescription}}</p>
+			<p style="color:black;">{{searchDescription}}</p>
 			<br>
 			<!--<p><b>Wiki Link</b></p>-->
 			<!--<p><a href="{{wiki}}"> {{wiki}}</a> </p>-->
