@@ -1,11 +1,32 @@
 /**
  * Created by user on 23/10/2016.
  */
+
 var myapp = angular.module('demoMongo',[]);
 myapp.run(function ($http) {
     $http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
     $http.defaults.headers.post['dataType'] = 'json'
 });
+
+
+myapp.controller('indexctrl', function($scope, $http) {
+    $scope.getSearchResult = function() {
+        $http.get('http://127.0.0.1:5000/kg?query='+$scope.searchDestination).success(function (data) {
+            try {
+                console.log(data);
+                $scope.searchDescription = data.itemListElement[0].result.detailedDescription.articleBody;
+                $scope.description = "Description:";
+                $scope.wiki = data.itemListElement[0].result.detailedDescription.url;
+                $scope.wikiheading = "Explore " + $scope.searchDestination + " wiki in the following link";
+                $scope.searchimage = data.itemListElement[0].result.image.contentUrl;
+            }
+            catch (err) {
+                // document.getElementById("errormsg").innerHTML = "Please Correct your search item";
+            }
+        })
+    }
+})
+
 myapp.controller('MongoRestController',function($scope,$http,$window){
 
     $scope.focusfn = function () {

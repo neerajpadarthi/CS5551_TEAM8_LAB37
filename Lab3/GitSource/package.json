@@ -13,6 +13,7 @@
     "ngstorage": "^0.3.11",
     "nodemailer": "^4.6.8",
     "request": "^2.88.0",
+    "request-json": "^0.6.3",
     "save": "^2.3.2",
     "xoauth2": "^1.2.0"
   },

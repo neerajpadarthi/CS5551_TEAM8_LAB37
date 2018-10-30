@@ -1,6 +1,6 @@
 var express = require('express')
 var app = express();
-
+var request= require('request-json');
 const nodemailer = require ('nodemailer');
 const xoauth2 =  require ('xoauth2') ;
 
@@ -16,6 +16,24 @@ var url = 'mongodb://appstest:appstest123@ds137003.mlab.com:37003/apps';
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
+var client = request.createClient('http://127.0.0.1:5000/');
+
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
+app.get('/kg', function (req, res) {
+    var searchKeyword = req.query.query;
+    console.log("searchKeyword is XXXXX",searchKeyword);
+    client.get("https://kgsearch.googleapis.com/v1/entities:search?query="+searchKeyword+"&key=AIzaSyCZbMz2VUDfsNIawl7W9W64FpZp8gsoh10&limit=1&indent=True", function (error, response, body) {
+        res.send(body);
+    });
+});
+
+
 app.post('/enroll', function (req, res) {
     MongoClient.connect(url, function(err, client) {
         if(err)
