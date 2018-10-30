@@ -34,9 +34,9 @@ app.get('/getData', function (req, res) {
             type: 'OAuth2',
             user: 's.pallavidesai@gmail.com',
             clientId: '319573095737-2c98cnr7fhjnurbi5es3h907klpd0hpb.apps.googleusercontent.com',
-            clientSecret: 'KZ1frHthVQ76hInQK9tjU3Gw',
-            refreshToken: '1/ygt_aw7FxteuAfblxMSFrm0wPDRYZT-DNqnnfJLCLwM',
-            accessToken: 'ya29.GltFBjWUTyAiDH7USeXj3duqUCq_Opy9N0l2onl-JTmj-Mi1_dN79sb5TVaPSiEjHASA80xoqtJd4DJ79o4JZqPsyW6HiVPmW_DIdVO9ISQlqVqMWPGkfbVR3dZf',
+            clientSecret: '',
+            refreshToken: '',
+            accessToken: '',
         },
     });
     var mailoption = {
