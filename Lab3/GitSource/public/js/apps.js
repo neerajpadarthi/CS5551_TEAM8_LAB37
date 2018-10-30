@@ -24,6 +24,29 @@ myapp.controller('indexctrl', function($scope, $http) {
                 // document.getElementById("errormsg").innerHTML = "Please Correct your search item";
             }
         })
+
+        var dataParams = {
+            'destination' : $scope.searchDestination,
+            'from' : $scope.from,
+            'to' : $scope.to,
+            'interest' : $scope.interest
+        };
+        var config = {
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+        }
+        var req = $http.post('http://127.0.0.1:5000/insdata',dataParams);
+        req.success(function(data, status, headers, config) {
+            $scope.message = data;
+            console.log("here "+data);
+            // $window.location.href = 'getData.html';
+        });
+        req.error(function(data, status, headers, config) {
+            alert( "failure message: " + JSON.stringify({data: data}));
+        });
+
+
     }
 })
 
