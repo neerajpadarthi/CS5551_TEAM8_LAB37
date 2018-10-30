@@ -48,6 +48,22 @@ app.post('/enroll', function (req, res) {
         });
     });
 });
+
+app.post('/insdata', function (req, res) {
+    MongoClient.connect(url, function(err, client) {
+        if(err)
+        {
+            res.write("Failed, Error while cosnnecting to Database");
+            res.end();
+        }
+        var db= client.db();
+        insertSearchDocument(db, req.body, function() {
+            res.write("Successfully inserted");
+            res.end();
+        });
+    });
+});
+
 app.get('/getData', function (req, res) {
     var searchKeywords = req.query.keywords;
     console.log("Param are "+searchKeywords);
@@ -70,6 +86,18 @@ app.get('/getData', function (req, res) {
 });
 var insertDocument = function(db, data, callback) {
     db.collection('aselab').insertOne( data, function(err, result) {
+        if(err)
+        {
+            res.write("Registration Failed, Error While Registering");
+            res.end();
+        }
+        console.log("Inserted a document into the asedemo collection.");
+        callback();
+    });
+};
+
+var insertSearchDocument = function(db, data, callback) {
+    db.collection('aselabsearch').insertOne( data, function(err, result) {
         if(err)
         {
             res.write("Registration Failed, Error While Registering");
