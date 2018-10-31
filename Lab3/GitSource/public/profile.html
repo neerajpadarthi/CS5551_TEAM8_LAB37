@@ -10,6 +10,14 @@
 <link rel="stylesheet" type="text/css" href="styles/contact_styles.css">
 <link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
 </head>
+<script>
+    function homepg() {
+        var url=window.location.href;
+        var userName=(url.substr(53)).replace("%20"," ");
+        console.log('in html',userName);
+        window.location.href = 'home.html?'+ userName;
+    }
+	</script>
 <body ng-app="demoMongo" ng-controller="getprofile">
 <div class="super_container">
 	<!-- Header -->
@@ -25,7 +33,7 @@
 						</div>
 						<div class="main_nav_container ml-auto">
 							<ul class="main_nav_list">
-								<li class="main_nav_item"><a href="home.html">home</a></li>
+								<li class="main_nav_item"><a onclick="homepg()">home</a></li>
 								<li class="main_nav_item"><a href="about.html">about us</a></li>
 								<li class="main_nav_item"><a href="profile.html">profile</a></li>
 								<li class="main_nav_item"><a href="history.html">history</a></li>

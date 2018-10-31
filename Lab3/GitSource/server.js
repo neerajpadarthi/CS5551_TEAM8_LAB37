@@ -83,6 +83,25 @@ app.get('/getData', function (req, res) {
         });
     });
 });
+app.get('/updateData', function (req, res) {
+    var searchKeywords = req.query.keywords;
+    console.log("Param are update"+searchKeywords);
+    MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("apps");
+        var query = { username: searchKeywords };
+        var newvalues = { $set: {mobile: "777777"} };
+        dbo.collection("aselab").updateOne(query, newvalues, function(err, res) {
+            if (err) throw err;
+            // console.log(result[0].major);
+            console.log("1 document updated");
+            db.close();
+        });
+    });
+});
+
+
+
 
 var insertDocument = function(db, data, callback) {
     db.collection('aselab').insertOne( data, function(err, result) {
