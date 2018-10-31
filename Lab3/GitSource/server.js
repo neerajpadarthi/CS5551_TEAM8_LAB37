@@ -84,7 +84,7 @@ app.get('/getData', function (req, res) {
     });
 });
 app.get('/updateData', function (req, res) {
-    var searchKeywords = req.query.keywords.substring(1,req.query.keywords.indexOf('@@@'));
+    var searchKeywords = req.query.keywords.substring(0,req.query.keywords.indexOf('@@@'));
     var searchKeywords1 = req.query.keywords.substring(req.query.keywords.indexOf('@@@')+3,req.query.keywords.length);
     console.log("Param are searchKeywords"+searchKeywords);
     console.log("Param are searchKeywords"+searchKeywords1);
