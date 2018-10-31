@@ -1,0 +1,124 @@
+<html >
+<head>
+<title>Contact</title>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="description" content="Travelix Project">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="styles/bootstrap4/bootstrap.min.css">
+<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="styles/contact_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
+</head>
+<script>
+    function homepg() {
+        var url=window.location.href;
+        var userName=(url.substr(53)).replace("%20"," ");
+        console.log('in html',userName);
+        window.location.href = 'home.html?'+ userName;
+    }
+    function historypg() {
+        var url=window.location.href;
+        var userName=(url.substr(53)).replace("%20"," ");
+        console.log('in html',userName);
+        window.location.href = 'history.html?'+ userName;
+    }
+</script>
+
+<body ng-app="demoMongo" ng-controller="gethistory">
+
+<div class="super_container">
+	
+	<!-- Header -->
+
+	<header class="header">
+
+
+		<!-- Main Navigation -->
+
+		<nav class="main_nav">
+			<div class="container">
+				<div class="row">
+					<div class="col main_nav_col d-flex flex-row align-items-center justify-content-start">
+						<div class="logo_container">
+							<div class="logo"><a href="#"><img src="images/logo.png" alt="">Travel Explorer</a></div>
+						</div>
+						<div class="main_nav_container ml-auto">
+							<ul class="main_nav_list">
+								<li class="main_nav_item"><a href="home.html">home</a></li>
+								<li class="main_nav_item"><a href="about.html">about us</a></li>
+								<li class="main_nav_item"><a href="#">history</a></li>
+								<li class="main_nav_item"><a href="profile.html">profile</a></li>
+								<li class="main_nav_item"><a href="contact.html">contact</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>	
+		</nav>
+
+	</header>
+
+
+
+	<!-- Home -->
+
+	<div class="home">
+		<div class="home_background parallax-window" data-parallax="scroll" data-image-src="images/contact_background.jpg"></div>
+		<div class="home_content">
+			<div class="home_title">Search History</div>
+		</div>
+	</div>
+
+	<!-- Contact -->
+
+	<div class="contact_form_section">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+
+					<!-- Contact Form -->
+					<div class="contact_form_container">
+						<table id="weather" class="tftable" border="3">
+							<tr>
+								<th>Eamil ID</th>
+								<th>Destination</th>
+								<th>From</th>
+								<th>To</th>
+							</tr>
+							<tr ng-repeat="x in fullDocument">
+								<td>{{x.substring(0,x.indexOf('!!!'))}}</td>
+								<td>{{x.substring(x.indexOf('!!!')+3,x.indexOf('@@@'))}}</td>
+								<td>{{x.substring(x.indexOf('@@@')+3,x.indexOf('###'))}}</td>
+								<td>{{x.substring(x.indexOf('###')+3,x.length)}}</td>
+								<!--<td>{{x.substring(x.indexOf('-',3)+1,x.indexOf('http')-1)}}</td>-->
+							</tr>
+						</table>
+						<input type="button" class="form_submit_button button trans_200" style="padding:9px 18px;"  value="Delete" ng-click="deletedoc()" onclick="historypg()"/>
+
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- About -->
+
+
+	<!-- Google Map -->
+</div>
+<script src="js/directives/jquery-3.2.1.min.js"></script>
+<script src="styles/bootstrap4/popper.js"></script>
+<script src="styles/bootstrap4/bootstrap.min.js"></script>
+<script src="plugins/parallax-js-master/parallax.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyCIwF204lFZg1y4kPSIhKaHEXMLYxxuMhA"></script>
+<script src="js/directives/contact_custom.js"></script>
+
+</body>
+<script type="text/javascript" src="https://code.angularjs.org/1.1.1/angular.js"></script>
+<script type="text/javascript" src="https://code.angularjs.org/1.1.1/angular-resource.js"></script>
+<script type="text/javascript" src="https://code.angularjs.org/1.1.1/angular-sanitize.js"></script>
+<script src="js/apps.js"></script>
+</html>

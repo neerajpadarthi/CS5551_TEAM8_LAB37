@@ -29,6 +29,13 @@
         console.log('in html',userName);
         window.location.href = 'profile.html?'+ userName;
     }
+
+    function homepg() {
+        var url=window.location.href;
+        var userName=(url.substr(50)).replace("%20"," ");
+        console.log('in homepg html',userName);
+        window.location.href = 'history.html?'+ userName;
+    }
 </script>
 <body  ng-app="demoMongo" ng-controller="indexctrl">
 <div class="super_container">
@@ -46,7 +53,7 @@
 								<li class="main_nav_item"><a href="about.html">about us</a></li>
 								<li class="main_nav_item"><a onclick="profilepg()">profile</a></li>
 								<li class="main_nav_item"><a href="contact.html">contact</a></li>
-								<li class="main_nav_item"><a href="history.html">history</a></li>
+								<li class="main_nav_item"><a onclick="homepg()">history</a></li>
 								<input type="button" class="button search_button" style="padding:9px 18px;" onclick="hideFunction()"  ng-click="getprofile()" value="Find"/>
 							</ul>
 						</div>

@@ -83,6 +83,29 @@ app.get('/getData', function (req, res) {
         });
     });
 });
+
+app.get('/getHistoryData', function (req, res) {
+    var searchKeywords = req.query.keywords;
+    console.log("Param are "+searchKeywords);
+    MongoClient.connect(url, function(err, db) {
+        if(err)
+        {
+            res.write("Failed, Error while cosnnecting to Database");
+            res.end();
+        }
+        if (err) throw err;
+        var dbo = db.db("apps");
+        var query = { username: searchKeywords };
+        dbo.collection("aselabsearch").find(query).toArray(function(err, result) {
+            if (err) throw err;
+            // console.log(result[0].major);
+            db.close();
+            res.json(result);
+        });
+    });
+});
+
+
 app.get('/updateData', function (req, res) {
     var searchKeywords = req.query.keywords.substring(0,req.query.keywords.indexOf('@@@'));
     var searchKeywords1 = req.query.keywords.substring(req.query.keywords.indexOf('@@@')+3,req.query.keywords.length);
@@ -101,6 +124,25 @@ app.get('/updateData', function (req, res) {
         });
     });
 });
+
+app.get('/deleteData', function (req, res) {
+    var searchKeywords = req.query.keywords;
+    console.log("Param are searchKeywords"+searchKeywords);
+    // console.log("Param are searchKeywords"+searchKeywords1);
+    MongoClient.connect(url, function(err, db) {
+        if (err) throw err;
+        var dbo = db.db("apps");
+        var query = { username: searchKeywords };
+        dbo.collection("aselabsearch").deleteMany(query, function(err, obj) {
+            if (err) throw err;
+            // console.log(result[0].major);
+            console.log(obj.result.n +"document updated");
+            db.close();
+        });
+    });
+});
+
+
 
 
 
