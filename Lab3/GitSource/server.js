@@ -33,7 +33,6 @@ app.get('/kg', function (req, res) {
     });
 });
 
-
 app.post('/enroll', function (req, res) {
     MongoClient.connect(url, function(err, client) {
         if(err)
@@ -84,6 +83,7 @@ app.get('/getData', function (req, res) {
         });
     });
 });
+
 var insertDocument = function(db, data, callback) {
     db.collection('aselab').insertOne( data, function(err, result) {
         if(err)
