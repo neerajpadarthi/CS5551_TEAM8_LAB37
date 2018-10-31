@@ -30,11 +30,29 @@
         window.location.href = 'profile.html?'+ userName;
     }
 
-    function homepg() {
+    function historypg() {
         var url=window.location.href;
         var userName=(url.substr(50)).replace("%20"," ");
         console.log('in homepg html',userName);
         window.location.href = 'history.html?'+ userName;
+    }
+    function historypg() {
+        var url=window.location.href;
+        var userName=(url.substr(50)).replace("%20"," ");
+        console.log('in homepg html',userName);
+        window.location.href = 'home.html?'+ userName;
+    }
+    function contactpg() {
+        var url=window.location.href;
+        var userName=(url.substr(50)).replace("%20"," ");
+        console.log('in homepg html',userName);
+        window.location.href = 'contact.html?'+ userName;
+    }
+    function aboutpg() {
+        var url=window.location.href;
+        var userName=(url.substr(50)).replace("%20"," ");
+        console.log('in homepg html',userName);
+        window.location.href = 'about.html?'+ userName;
     }
 </script>
 <body  ng-app="demoMongo" ng-controller="indexctrl">
@@ -49,11 +67,11 @@
 						</div>
 						<div class="main_nav_container ml-auto">
 							<ul class="main_nav_list">
-								<li class="main_nav_item"><a href="#">home</a></li>
-								<li class="main_nav_item"><a href="about.html">about us</a></li>
+								<li class="main_nav_item"><a onclick="homepg()">home</a></li>
+								<li class="main_nav_item"><a onclick="aboutpg()">about us</a></li>
 								<li class="main_nav_item"><a onclick="profilepg()">profile</a></li>
-								<li class="main_nav_item"><a href="contact.html">contact</a></li>
-								<li class="main_nav_item"><a onclick="homepg()">history</a></li>
+								<li class="main_nav_item"><a onclick="contactpg()">contact</a></li>
+								<li class="main_nav_item"><a onclick="historypg()">history</a></li>
 								<input type="button" class="button search_button" style="padding:9px 18px;" onclick="hideFunction()"  ng-click="getprofile()" value="Find"/>
 							</ul>
 						</div>
