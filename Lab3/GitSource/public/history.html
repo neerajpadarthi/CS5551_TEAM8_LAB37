@@ -17,6 +17,30 @@
         console.log('in html',userName);
         window.location.href = 'home.html?'+ userName;
     }
+    function profilepg() {
+        var url=window.location.href;
+        var userName=(url.substr(53)).replace("%20"," ");
+        console.log('in html',userName);
+        window.location.href = 'profile.html?'+ userName;
+    }
+    function aboutpg() {
+        var url=window.location.href;
+        var userName=(url.substr(53)).replace("%20"," ");
+        console.log('in html',userName);
+        window.location.href = 'about.html?'+ userName;
+    }
+    function contactpg() {
+        var url=window.location.href;
+        var userName=(url.substr(53)).replace("%20"," ");
+        console.log('in html',userName);
+        window.location.href = 'contact.html?'+ userName;
+    }
+    function signoutpg() {
+        var url=window.location.href;
+        var userName=(url.substr(53)).replace("%20"," ");
+        console.log('in html',userName);
+        window.location.href = 'index.html';
+    }
     function historypg() {
         var url=window.location.href;
         var userName=(url.substr(53)).replace("%20"," ");
@@ -45,11 +69,12 @@
 						</div>
 						<div class="main_nav_container ml-auto">
 							<ul class="main_nav_list">
-								<li class="main_nav_item"><a href="home.html">home</a></li>
-								<li class="main_nav_item"><a href="about.html">about us</a></li>
-								<li class="main_nav_item"><a href="#">history</a></li>
-								<li class="main_nav_item"><a href="profile.html">profile</a></li>
-								<li class="main_nav_item"><a href="contact.html">contact</a></li>
+								<li class="main_nav_item"><a onclick="homepg()">home</a></li>
+								<li class="main_nav_item"><a onclick="aboutpg()">about us</a></li>
+								<li class="main_nav_item"><a onclick="profilepg()">profile</a></li>
+								<li class="main_nav_item"><a onclick="historypg()">history</a></li>
+								<li class="main_nav_item"><a onclick="contactpg()">contact</a></li>
+								<li class="main_nav_item"><a onclick="signoutpg()">sign out</a></li>
 							</ul>
 						</div>
 					</div>
