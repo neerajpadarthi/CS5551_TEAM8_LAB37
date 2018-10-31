@@ -143,7 +143,7 @@ app.listen(port, function() {
 
 
 
-app.get('/getData', function (req, res) {
+app.get('/getDataEmail', function (req, res) {
     var searchKeywords = req.query.searchkey;
     var searchKeywords1 = req.query.searchkey1;
     var searchKeywords2 = req.query.searchkey2;
