@@ -46,10 +46,10 @@ myapp.controller('getprofile',function($scope,$http){
         console.log("It is angular get profile !!!!!!!!!!!"+userName);
 
 
-        $http.get('http://127.0.0.1:5000/updateData?keywords='+userName).then(function(d)
+        $http.get('http://127.0.0.1:5000/updateData?keywords='+userName).success(function(d)
             {
                 console.log("Updated");
-                $window.location.href = 'profile.html?'+'userName';
+                // $window.location.href = 'profile.html?'+'userName';
             },function(err)
             {
                 console.log(err);

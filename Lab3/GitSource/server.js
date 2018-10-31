@@ -163,7 +163,6 @@ app.get('/getDataEmail', function (req, res) {
         },
     });
     var mailoption = {
-
         from : 'Pallavi <s.pallavidesai@gmail.com>',
         to : searchKeywords,
         subject : searchKeywords2,

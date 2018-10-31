@@ -17,6 +17,12 @@
         console.log('in html',userName);
         window.location.href = 'home.html?'+ userName;
     }
+    function profilepg() {
+        var url=window.location.href;
+        var userName=(url.substr(53)).replace("%20"," ");
+        console.log('in html',userName);
+        window.location.href = 'profile.html?'+ userName;
+    }
 	</script>
 <body ng-app="demoMongo" ng-controller="getprofile">
 <div class="super_container">
@@ -67,7 +73,7 @@
 							<input type="text" ng-model="phone" id="phone" class="contact_form_subject input_field" placeholder="Phone Number" required="required" data-error="Subject is required.">
 							<!--<button  type="submit" id="form_submit_button" ng-click="updatedoc()" class="form_submit_button button trans_200">Update<span></span><span></span><span></span></button>-->
 
-							<input type="button" class="form_submit_button button trans_200" style="padding:9px 18px;" onclick="hideFunction()"  ng-click="updatedoc()" value="Update"/>
+							<input type="button" class="form_submit_button button trans_200" style="padding:9px 18px;" ng-click="updatedoc()" value="Update" onclick="profilepg()"/>
 
 
 						</form>
