@@ -1,7 +1,6 @@
 /**
  * Created by user on 23/10/2016.
  */
-
 var myapp = angular.module('demoMongo',[]);
 myapp.run(function ($http) {
     $http.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
@@ -9,7 +8,58 @@ myapp.run(function ($http) {
 });
 
 
-myapp.controller('indexctrl', function($scope, $http) {
+myapp.controller('getprofile',function($scope,$http){
+
+
+    console.log("It is angular !!!!!!!!!!!"+userName);
+
+    $scope.getprofile = function(){
+        console.log($scope.formData.major);
+        var config = {
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+        }
+        // var req = $http.get('http://127.0.0.1:8081/getData');
+        $http.get('http://127.0.0.1:8081/getData?keywords='+$scope.formData.major).then(function(d)
+            {
+                console.log("document is "+document);
+                console.log("val "+JSON.stringify({d: d}));
+
+            },function(err)
+            {
+                console.log(err);
+            }
+        )
+    };
+});
+
+myapp.controller('indexctrl', function($scope, $http,$window) {
+
+    $scope.getprofile = function(){
+        console.log("in get profile")
+        var url=window.location.href;
+        var userName=(url.substr(50)).replace("%20"," ");
+         console.log(userName);
+        // console.log($scope.formData.major);
+        var config = {
+            headers : {
+                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+            }
+        }
+        // var req = $http.get('http://127.0.0.1:8081/getData');
+        $http.get('http://127.0.0.1:5000/getData?keywords='+userName).then(function(d)
+            {
+                console.log("document is ok"+document);
+                console.log("val "+JSON.stringify({d: d}));
+                $window.location.href = 'profile.html';
+            },function(err)
+            {
+                console.log(err);
+            }
+        )
+    };
+
     $scope.getSearchResult = function() {
         $http.get('http://127.0.0.1:5000/kg?query='+$scope.searchDestination).success(function (data) {
             try {
