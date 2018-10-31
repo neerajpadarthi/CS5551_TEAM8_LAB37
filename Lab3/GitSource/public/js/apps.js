@@ -10,55 +10,53 @@ myapp.run(function ($http) {
 
 myapp.controller('getprofile',function($scope,$http){
 
+    var url=window.location.href;
+    var userName=(url.substr(53)).replace("%20"," ");
 
-    console.log("It is angular !!!!!!!!!!!"+userName);
+    console.log("It is angular get profile !!!!!!!!!!!"+userName);
 
-    $scope.getprofile = function(){
-        console.log($scope.formData.major);
-        var config = {
-            headers : {
-                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-            }
+    var config = {
+        headers : {
+            'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
         }
-        // var req = $http.get('http://127.0.0.1:8081/getData');
-        $http.get('http://127.0.0.1:8081/getData?keywords='+$scope.formData.major).then(function(d)
-            {
-                console.log("document is "+document);
-                console.log("val "+JSON.stringify({d: d}));
+    }
+    // // var req = $http.get('http://127.0.0.1:8081/getData');
+    $http.get('http://127.0.0.1:5000/getData?keywords='+userName).then(function(d)
+        {
+            console.log("document is ok"+document);
+            console.log("val "+JSON.stringify({d: d}));
+            console.log("Before "+$scope.zzzname);
+            $scope.zzzname= d.data[0].firstname;
+            $scope.lname= d.data[0].lastname;
+            $scope.uname= d.data[0].username;
+            $scope.phone= d.data[0].mobile;
+            console.log("After "+d.data[0].phone);
+            // $window.location.href = 'profile.html';
+        },function(err)
+        {
+            console.log(err);
+        }
+    )
 
+    $scope.updatedoc = function() {
+        $http.get('http://127.0.0.1:5000/updateData?keywords='+userName).then(function(d)
+            {
+                console.log("Updated");
+                // $window.location.href = 'profile.html';
             },function(err)
             {
                 console.log(err);
             }
         )
     };
+
+
+
 });
+
 
 myapp.controller('indexctrl', function($scope, $http,$window) {
 
-    $scope.getprofile = function(){
-        console.log("in get profile")
-        var url=window.location.href;
-        var userName=(url.substr(50)).replace("%20"," ");
-         console.log(userName);
-        // console.log($scope.formData.major);
-        var config = {
-            headers : {
-                'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-            }
-        }
-        // var req = $http.get('http://127.0.0.1:8081/getData');
-        $http.get('http://127.0.0.1:5000/getData?keywords='+userName).then(function(d)
-            {
-                console.log("document is ok"+document);
-                console.log("val "+JSON.stringify({d: d}));
-                $window.location.href = 'profile.html';
-            },function(err)
-            {
-                console.log(err);
-            }
-        )
-    };
 
     $scope.getSearchResult = function() {
         $http.get('http://127.0.0.1:5000/kg?query='+$scope.searchDestination).success(function (data) {
@@ -95,8 +93,6 @@ myapp.controller('indexctrl', function($scope, $http,$window) {
         req.error(function(data, status, headers, config) {
             alert( "failure message: " + JSON.stringify({data: data}));
         });
-
-
     }
 })
 
@@ -106,20 +102,6 @@ myapp.controller('MongoRestController',function($scope,$http,$window){
         $scope.focus = true;
         $scope.alreadyExists="";
     };
-
-
-    // $scope.unamefocusfn = function () {
-    //     $scope.focus = true;
-    //     $scope.finalErr="";
-    // };
-    // $scope.passfocusfn = function () {
-    //     $scope.focus = true;
-    //     $scope.finalErr="";
-    // };
-    // $scope.confirmpassfocusfn = function () {
-    //     $scope.focus = true;
-    //     $scope.finalErr="";
-    // };
 
     $scope.blurfn = function () {
         $scope.focus = false;
