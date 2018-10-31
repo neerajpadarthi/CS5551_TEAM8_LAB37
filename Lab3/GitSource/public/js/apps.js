@@ -39,14 +39,10 @@ myapp.controller('getprofile',function($scope,$http){
     )
 
     $scope.updatedoc = function() {
-
         var url=window.location.href;
         var userName=(url.substr(53)).replace("%20"," ");
-
         console.log("It is angular get profile !!!!!!!!!!!"+userName);
-
-
-        $http.get('http://127.0.0.1:5000/updateData?keywords='+userName).success(function(d)
+        $http.get('http://127.0.0.1:5000/updateData?keywords='+userName+'@@@'+$scope.phone).success(function(d)
             {
                 console.log("Updated");
                 // $window.location.href = 'profile.html?'+'userName';

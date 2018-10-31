@@ -84,13 +84,15 @@ app.get('/getData', function (req, res) {
     });
 });
 app.get('/updateData', function (req, res) {
-    var searchKeywords = req.query.keywords;
-    console.log("Param are update"+searchKeywords);
+    var searchKeywords = req.query.keywords.substring(1,req.query.keywords.indexOf('@@@'));
+    var searchKeywords1 = req.query.keywords.substring(req.query.keywords.indexOf('@@@')+3,req.query.keywords.length);
+    console.log("Param are searchKeywords"+searchKeywords);
+    console.log("Param are searchKeywords"+searchKeywords1);
     MongoClient.connect(url, function(err, db) {
         if (err) throw err;
         var dbo = db.db("apps");
         var query = { username: searchKeywords };
-        var newvalues = { $set: {mobile: "777777"} };
+        var newvalues = { $set: {mobile: searchKeywords1} };
         dbo.collection("aselab").updateOne(query, newvalues, function(err, res) {
             if (err) throw err;
             // console.log(result[0].major);
@@ -139,9 +141,6 @@ app.listen(port, function() {
 	console.log('app running')
     console.log("Example app listening at http://:%s", port)
 })
-
-
-
 
 app.get('/getDataEmail', function (req, res) {
     var searchKeywords = req.query.searchkey;
